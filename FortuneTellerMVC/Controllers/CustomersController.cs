@@ -32,6 +32,93 @@ namespace FortuneTellerMVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            int age;
+            if (customer.Age % 2 == 0)
+            {
+                age = 20;
+            }
+            else
+            {
+                age = 15;
+            }
+            ViewBag.RetirementAge = age;
+
+            int birthMonth;
+            if (customer.BirthMonth == "January" || customer.BirthMonth =="February" || customer.BirthMonth == "March" || customer.BirthMonth == "April" )
+            {
+                birthMonth = 20000;
+            }
+            else if (customer.BirthMonth == "May" || customer.BirthMonth == "June" || customer.BirthMonth == "July" || customer.BirthMonth == "August")
+            {
+                birthMonth = 25000;
+            }
+            else if (customer.BirthMonth == "September" || customer.BirthMonth == "October" || customer.BirthMonth == "November" || customer.BirthMonth == "December")
+            {
+                birthMonth = 30000;
+            }
+            else
+            {
+                birthMonth = 0;
+            }
+            ViewBag.BirthMonth = birthMonth;
+
+            string favoriteColor;
+            switch (customer.FavoriteColor.ToLower())
+            {
+                case "red":
+                    favoriteColor = "plane";
+                    break;
+                case "orange":
+                    favoriteColor = "Flying Nimbus";
+                    break;
+                case "yellow":
+                    favoriteColor = "Honda Element";
+                    break;
+                case "green":
+                    favoriteColor = "Delorean";
+                    break;
+                case "blue":
+                    favoriteColor = "Koenigsegg Agera R";
+                    break;
+                case "indigo":
+                    favoriteColor = "Porsche 911";
+                    break;
+                case "violet":
+                    favoriteColor = "pogo stick";
+                    break;
+                default:
+                    favoriteColor = "motorized scooter";
+                    break;
+            }
+            ViewBag.FavoriteColor = favoriteColor;
+
+            string vacationHome;
+            if (customer.NumberOfSiblings == 0)
+            {
+                vacationHome = "Miami";
+            }
+            else if (customer.NumberOfSiblings == 1)
+            {
+                vacationHome = "Paris";
+            }
+            else if (customer.NumberOfSiblings == 2)
+            {
+                vacationHome = "San Fransisco";
+            }
+            else if (customer.NumberOfSiblings == 3)
+            {
+                vacationHome = "Rome";
+            }
+            else if (customer.NumberOfSiblings > 3)
+            {
+                vacationHome = "Cancun";
+            }
+            else
+            {
+                vacationHome = "Detroit";
+            }
+            ViewBag.NumberOfSiblings = vacationHome;
             return View(customer);
         }
 
@@ -123,5 +210,7 @@ namespace FortuneTellerMVC.Controllers
             }
             base.Dispose(disposing);
         }
+
+       
     }
 }
